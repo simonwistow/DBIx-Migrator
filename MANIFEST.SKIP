@@ -1,0 +1,10 @@
+\.tar\.gz$
+\.svn
+_build
+Build
+blib
+Makefile
+\.db$
+\.bak$
+^MYMETA\.yml$
+^MYMETA\.json$

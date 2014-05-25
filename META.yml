@@ -1,0 +1,49 @@
+---
+abstract: 'migrate between different versions of a database schema'
+author:
+  - unknown
+build_requires:
+  Test::More: 0.62
+configure_requires:
+  Module::Build: 0.38
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.120351'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: DBIx-Migrator
+provides:
+  DBIx::Migrator:
+    file: lib/DBIx/Migrator.pm
+    version: 0.1
+  DBIx::Migrator::Migration:
+    file: lib/DBIx/Migrator/Strategy.pm
+    version: 0
+  DBIx::Migrator::Migration::Hash:
+    file: lib/DBIx/Migrator/Strategy/Hash.pm
+    version: 0
+  DBIx::Migrator::Migration::Serial:
+    file: lib/DBIx/Migrator/Strategy/Serial.pm
+    version: 0
+  DBIx::Migrator::Strategy:
+    file: lib/DBIx/Migrator/Strategy.pm
+    version: 0
+  DBIx::Migrator::Strategy::Hash:
+    file: lib/DBIx/Migrator/Strategy/Hash.pm
+    version: 0
+  DBIx::Migrator::Strategy::Serial:
+    file: lib/DBIx/Migrator/Strategy/Serial.pm
+    version: 0
+recommends:
+  Term::ANSIColor: 0
+requires:
+  DBI: 0
+  DBIx::DBSchema: 0
+  File::Spec: 0
+  Module::Metadata: 0
+  Module::Pluggable: 0
+resources:
+  license: http://dev.perl.org/licenses/
+  repository: https://github.com/simonwistow/DBIx-Migrator
+version: 0.1

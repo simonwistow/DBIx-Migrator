@@ -1,0 +1,15 @@
+- [x] Write base classes for Migration, Migration::Serial and Migration::Hash
+- [x] Find and instantiate migrations (make sure not mixing and matching types)
+- [ ] Write docs for Migration types and renable pod-coverage.t
+- [x] Get schema for ActiveRecord::Migration
+- [x] Find way to do diagnostics (callbacks)
+- [ ] Write tests
+- [ ] Write a bin/migrate script
+- [ ] Write examples for integrating with Makefile.PL and Build.PL
+- [ ] Collapse Table hash and Value hash to same value?
+- [ ] Reversible Hash
+- [ ] Allow loading of migrations from elsewhere than disk
+- [ ] Require latest version of DBIx::DBSchema or switch to something else
+- [ ] Use a common format for sql_create_table?
+- [ ] Enforce ordering for getting the value hash
+- [ ] Look at when to do begin_work and commit
