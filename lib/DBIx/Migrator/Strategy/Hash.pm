@@ -94,8 +94,8 @@ sub _get_table_hash {
   my $self  = shift;
   my $table = shift;
 
-  my $schema = DBIx::DBSchema->new_native($self->{dbh});
-  my $spec  = eval { $schema->table($table)->sql_create_table($self->{dbh}) };
+  my $schema  = DBIx::DBSchema->new_native($self->{dbh});
+  my ($spec)  = eval { $schema->table($table)->sql_create_table($self->{dbh}) };
   # TODO: It would be nice to be able to force a common format on the SQL
   # (by passing e.g "dbi:mysql:database" instead of $self->{dbh}) to sql_create_table
   # because then, theoretically, migrations would stay portable across databases.
