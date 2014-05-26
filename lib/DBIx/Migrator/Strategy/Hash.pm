@@ -3,8 +3,8 @@ package DBIx::Migrator::Strategy::Hash;
 use strict;
 use base qw(DBIx::Migrator::Strategy);
 use Digest::MD5 qw(md5_hex);
-use DBIx::DBSchema;
 use Data::Dumper;
+use SQL::Translator;
 
 sub new {
   my $class = shift;
@@ -94,8 +94,17 @@ sub _get_table_hash {
   my $self  = shift;
   my $table = shift;
 
-  my $schema  = DBIx::DBSchema->new_native($self->{dbh});
-  my ($spec)  = eval { $schema->table($table)->sql_create_table($self->{dbh}) };
+  my $translator  =  SQL::Translator->new(
+        no_comments   => 1,
+        parser        => 'DBI',
+        parser_args   => { dbh => $self->{dbh} },
+        producer      => "SQLite",
+        producer_args => { no_transaction => 1 },
+        filters       => [ sub { my $schema = shift; $schema->drop_table($_) for grep { $_ ne $table } $schema->get_tables } ],
+  );
+
+  my $spec = eval { $translator->translate };
+
   # TODO: It would be nice to be able to force a common format on the SQL
   # (by passing e.g "dbi:mysql:database" instead of $self->{dbh}) to sql_create_table
   # because then, theoretically, migrations would stay portable across databases.
