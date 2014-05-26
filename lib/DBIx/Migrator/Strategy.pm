@@ -44,5 +44,6 @@ sub new {
 }
 
 sub dbh { $dbh }
+sub filename { $_[0]->{filename} }
 
 1;

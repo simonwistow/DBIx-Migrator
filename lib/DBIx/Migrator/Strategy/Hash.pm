@@ -49,7 +49,7 @@ sub _handle_table {
   }
 
   if (defined $states->{$hash}) {
-    $self->warn("Table '$table' is out of date");
+    $self->warn("Table '$table' is out of date - running ".$states->{$hash}->filename);
 
     eval { $states->{$hash}->up };
     if ($@) {
@@ -73,7 +73,7 @@ sub _handle_table_values {
   my $hash   = $self->_get_value_hash($table);
 
   if (defined $states->{$hash}) {
-    $self->warn(">> Fields for table '$table' do not match $hash");
+    $self->warn(">> Fields for table '$table' do not match $hash - running ".$states->{$hash}->filename);
 
     eval { $states->{$hash}->up };
     if ($@) {
