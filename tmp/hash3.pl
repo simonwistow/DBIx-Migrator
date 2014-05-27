@@ -3,14 +3,12 @@ use strict;
 use base qw(DBIx::Migrator::Migration::Hash);
 
 sub table { "hashtest" }
-sub table_before { "c4ca4238a0b923820dcc509a6f75849b" }
-sub table_after  { }
+sub table_before { "f88f2ea79af8a02d6592e7e0dd04f64a" }
+# sub table_after  { "c6b73a6b67d62241d57aff36623322b9" }
 
 sub up {
     my $self = shift;
-    warn "Adding column\n";
     $self->{dbh}->do("ALTER TABLE hashtest ADD foobar STRING");
-    warn "Done column\n";
 }
 
 sub down {

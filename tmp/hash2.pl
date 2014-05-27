@@ -4,7 +4,7 @@ use base qw(DBIx::Migrator::Migration::Hash);
 
 sub table { "hashtest" }
 sub values_before { "" }
-sub values_after  { "cee8ec92cefddd6822ff54a562ebe6b5" }
+sub values_after  { "2b3317d9930b123b7d297bb8d4027c26" }
 
 sub up {
     my $self = shift;

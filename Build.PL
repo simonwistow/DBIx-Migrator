@@ -9,7 +9,6 @@ my $build = Module::Build
              'Module::Pluggable' => '0',
              'Module::Metadata'  => '0',
              'File::Spec'        => '0',
-             'DBIx::DBSchema'    => '0',
          },
          recommends => {
               'Term::ANSIColor'  => '0',

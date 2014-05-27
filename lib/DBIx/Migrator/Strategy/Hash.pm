@@ -3,7 +3,7 @@ package DBIx::Migrator::Strategy::Hash;
 use strict;
 use base qw(DBIx::Migrator::Strategy);
 use Digest::MD5 qw(md5_hex);
-use DBIx::DBSchema;
+use DBIx::Migrator::SchemaLoader;
 use Data::Dumper;
 
 sub new {
@@ -94,12 +94,7 @@ sub _get_table_hash {
   my $self  = shift;
   my $table = shift;
 
-  my $schema  = DBIx::DBSchema->new_native($self->{dbh});
-  my ($spec)  = eval { $schema->table($table)->sql_create_table($self->{dbh}) };
-  # TODO: It would be nice to be able to force a common format on the SQL
-  # (by passing e.g "dbi:mysql:database" instead of $self->{dbh}) to sql_create_table
-  # because then, theoretically, migrations would stay portable across databases.
-  # However DBIx::DBSchema is kind of buggy
+  my $spec  = DBIx::Migrator::SchemaLoader->schema($table, $self->{dbh});
   return $spec ? md5_hex($spec) : undef;
 }
 
